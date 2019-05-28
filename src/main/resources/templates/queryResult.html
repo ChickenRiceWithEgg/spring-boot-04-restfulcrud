@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">  <!-- 导入thymeleaf的命名空间，之后就有了thymeleaf的语法提示-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <!-- th:text  不会转义 -->
+    <div th:text="${hello}"></div>
+    <!-- th:text  会转义 -->
+    <div th:utext="${hello}"></div>
+
+    <div th:each="name : ${names}">
+        <h1 th:text="${name}"></h1>
+    </div>
+
+    <!-- th:each每次遍历都会生成当前标签 所以会有三个h4标签-->
+    <h4 th:text="${name}" th:each="name : ${names}"></h4>
+
+    <!-- 会有一个h4标签，其中有三个值-->
+    <h4>
+        <span th:text="${name}" th:each="name : ${names}"></span>
+    </h4>
+
+    <h4>
+        <span th:each="name : ${names}"> [[${name}]]</span>
+    </h4>
+
+</body>
+</html>
